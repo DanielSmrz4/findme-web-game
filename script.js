@@ -28,7 +28,7 @@ allTiles.forEach((e) => {
                     attemps.innerText = startCountingFrom
                 }
                    
-            })
+            }, { once: true });
         } else if (e.classList[1] == "winner-indicator") {
             e.addEventListener("click", (e) => {
                 e.preventDefault()
@@ -38,7 +38,10 @@ allTiles.forEach((e) => {
                 }
                 count.innerText = ("FUCK YEAH!!!")
                 winnerTile.classList.add("winner-highligh")
-            })
+                allTiles.forEach((e) => {
+                    e.removeEventListener("click", e)
+                })
+            }, { once: true });
         }                
 });
 
